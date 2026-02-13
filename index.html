@@ -5,30 +5,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Tinthai ❤️</title>
     <style>
-        body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #ffebee; font-family: 'Arial', sans-serif; overflow: hidden; }
-        .container { position: relative; width: 350px; height: 300px; display: flex; justify-content: center; align-items: center; }
-        .envelope { position: absolute; width: 100%; height: 250px; background-color: #f44336; border-radius: 15px; display: flex; justify-content: center; align-items: center; z-index: 20; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: all 0.5s ease; }
-        .envelope::after { content: "💌 Click to Open"; color: white; font-weight: bold; font-size: 1.2rem; }
-        .opened .envelope { opacity: 0; visibility: hidden; transform: scale(1.1); }
-        #card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; width: 320px; opacity: 0; transform: translateY(40px); transition: all 0.6s ease-out; z-index: 10; }
-        .opened #card { opacity: 1; transform: translateY(0); }
-        .main-img { width: 100%; max-width: 220px; border-radius: 15px; margin-bottom: 15px; }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffebee;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 350px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .envelope {
+            position: absolute;
+            width: 100%;
+            height: 250px;
+            background-color: #f44336;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.5s ease;
+        }
+
+        .envelope::after {
+            content: "💌 Click to Open";
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .opened .envelope {
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.1);
+        }
+
+        #card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 320px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.6s ease-out;
+            z-index: 10;
+        }
+
+        .opened #card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .main-img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         h1 { color: #d32f2f; margin: 10px 0; font-size: 1.8rem; }
         p { font-size: 1.2rem; color: #555; margin-bottom: 20px; }
-        .btn-container { display: flex; justify-content: center; gap: 20px; height: 50px; }
-        button { padding: 10px 25px; font-size: 1rem; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            height: 50px;
+        }
+
+        button {
+            padding: 10px 25px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
         #yesBtn { background-color: #4caf50; color: white; }
         #noBtn { background-color: #f44336; color: white; transition: all 0.1s; }
-        #successPage { display: none; text-align: center; z-index: 30; }
+
+        #successPage {
+            display: none;
+            text-align: center;
+            z-index: 30;
+        }
+
         .shake { animation: shake-anim 0.2s infinite; }
-        @keyframes shake-anim { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(10px); } }
+        @keyframes shake-anim {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
     </style>
 </head>
 <body>
+
     <div class="container" id="mainContainer">
         <div class="envelope" onclick="openEnvelope()"></div>
+
         <div id="card">
-            <img class="main-img" src="cat1.png" alt="Cute Cat">
+            <img class="main-img" src="cat1.png.JPG" alt="Cute Cat">
             <h1>Tinthai</h1>
             <p>Will you be my Valentine 🫦</p>
             <div class="btn-container">
@@ -37,20 +131,28 @@
             </div>
         </div>
     </div>
+
     <div id="successPage">
         <h1 style="font-size: 2.5rem; color: #d32f2f;">Yee mak noob</h1>
-        <h2>Best decision ever</h2>
-        <img src="https://media.giphy.com/media/GeimqsH0TLDt4tScGw/giphy.gif" style="width: 280px; border-radius: 20px;">
+        <h2 style="color: #555;">Best decision ever</h2>
+        <img src="https://media.giphy.com/media/GeimqsH0TLDt4tScGw/giphy.gif" style="width: 280px; border-radius: 20px; display: block; margin: 0 auto;">
         <p style="font-weight: bold; font-size: 1.8rem; color: #ff4081; margin-top: 15px;">I love u baby</p>
     </div>
+
     <script>
-        function openEnvelope() { document.getElementById('mainContainer').classList.add('opened'); }
+        function openEnvelope() {
+            document.getElementById('mainContainer').classList.add('opened');
+        }
+
         function moveButton() {
             const noBtn = document.getElementById('noBtn');
             noBtn.style.position = 'fixed';
-            noBtn.style.left = Math.random() * (window.innerWidth - noBtn.offsetWidth) + 'px';
-            noBtn.style.top = Math.random() * (window.innerHeight - noBtn.offsetHeight) + 'px';
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
         }
+
         function showSuccess() {
             document.getElementById('mainContainer').style.display = 'none';
             document.getElementById('successPage').style.display = 'block';
@@ -59,19 +161,22 @@
             setTimeout(() => document.body.classList.remove('shake'), 2000);
             setInterval(createHeart, 150);
         }
+
         function createHeart() {
             const heart = document.createElement('div');
-            heart.innerText = '❤️'; heart.style.position = 'fixed';
-            heart.style.left = Math.random() * 100 + 'vw'; heart.style.top = '-20px';
+            heart.innerText = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '-20px';
             heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
             document.body.appendChild(heart);
             let top = -20;
             const fall = setInterval(() => {
-                top += 4; heart.style.top = top + 'px';
+                top += 4;
+                heart.style.top = top + 'px';
                 if (top > window.innerHeight) { clearInterval(fall); heart.remove(); }
             }, 20);
         }
     </script>
 </body>
 </html>
-ไหม
