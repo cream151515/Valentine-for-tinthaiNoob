@@ -25,7 +25,6 @@
             align-items: center;
         }
 
-        /* ซองจดหมายทึบสีแดง */
         .envelope {
             position: absolute;
             width: 100%;
@@ -48,14 +47,12 @@
             font-size: 1.2rem;
         }
 
-        /* เมื่อเปิดแล้วซองจดหมายจะค่อยๆ จางและขยายออก */
         .opened .envelope {
             opacity: 0;
             visibility: hidden;
             transform: scale(1.1);
         }
 
-        /* หน้าจดหมายข้างใน */
         #card {
             background: white;
             padding: 25px;
@@ -103,7 +100,6 @@
         #yesBtn { background-color: #4caf50; color: white; }
         #noBtn { background-color: #f44336; color: white; transition: all 0.1s; }
 
-        /* หน้าที่ 2: หน้าดีใจที่สำเร็จแล้ว */
         #successPage {
             display: none;
             text-align: center;
@@ -123,7 +119,7 @@
         <div class="envelope" onclick="openEnvelope()"></div>
 
         <div id="card">
-            <img class="main-img" src="https://media.tenor.com/O6lV9X0J8m0AAAAM/cat-cute.gif" alt="Cute Cat">
+            <img class="main-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" id="cat1" alt="Cute Cat">
             <h1>Tinthai</h1>
             <p>Will you be my Valentine 🫦</p>
             <div class="btn-container">
@@ -136,11 +132,14 @@
     <div id="successPage">
         <h1 style="font-size: 2.5rem; color: #d32f2f;">Yee mak noob</h1>
         <h2 style="color: #555;">Best decision ever</h2>
-        <img src="https://media.giphy.com/media/GeimqsH0TLDt4tScGw/giphy.gif" style="width: 280px; border-radius: 20px;">
+        <img id="cat2" src="https://media.giphy.com/media/GeimqsH0TLDt4tScGw/giphy.gif" style="width: 280px; border-radius: 20px;">
         <p style="font-weight: bold; font-size: 1.8rem; color: #ff4081; margin-top: 15px;">I love u baby</p>
     </div>
 
     <script>
+        // ใส่ลิงก์สำรองเพื่อความชัวร์ที่สุด
+        document.getElementById('cat1').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXo3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpNwSULPk3l/giphy.gif";
+
         function openEnvelope() {
             document.getElementById('mainContainer').classList.add('opened');
         }
@@ -148,7 +147,6 @@
         function moveButton() {
             const noBtn = document.getElementById('noBtn');
             noBtn.style.position = 'fixed';
-            // สุ่มตำแหน่งโดยไม่ให้ทับกับปุ่ม Yes
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
             noBtn.style.left = x + 'px';
@@ -159,7 +157,6 @@
             document.getElementById('mainContainer').style.display = 'none';
             document.getElementById('successPage').style.display = 'block';
             document.body.style.backgroundColor = '#fce4ec';
-            // เอฟเฟกต์หน้าสั่นโยกๆ
             document.body.classList.add('shake');
             setTimeout(() => document.body.classList.remove('shake'), 2000);
             setInterval(createHeart, 150);
