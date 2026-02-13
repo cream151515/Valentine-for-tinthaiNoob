@@ -16,88 +16,81 @@
             overflow: hidden;
         }
 
-        /* กล่องคุมจดหมาย */
         .container {
             position: relative;
             width: 350px;
-            height: 250px;
+            height: 300px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* ดีไซน์ซองจดหมาย */
         .envelope {
             position: absolute;
             width: 100%;
-            height: 100%;
+            height: 250px;
             background-color: #f44336;
-            border-radius: 10px;
+            border-radius: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 10;
+            z-index: 20;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: opacity 0.5s ease, visibility 0.5s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.5s ease;
         }
 
-        .envelope-text {
+        .envelope::after {
+            content: "💌 Click to Open";
             color: white;
             font-weight: bold;
             font-size: 1.2rem;
-            pointer-events: none;
         }
 
-        /* หน้าจดหมายข้างใน (Card) */
-        #card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            width: 300px;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        /* เมื่อกดเปิด */
         .opened .envelope {
             opacity: 0;
             visibility: hidden;
+            transform: scale(1.1);
+        }
+
+        #card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 320px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.6s ease-out;
+            z-index: 10;
         }
 
         .opened #card {
             opacity: 1;
-            transform: scale(1);
-            pointer-events: auto;
+            transform: translateY(0);
         }
 
         .main-img {
             width: 100%;
-            max-width: 250px;
+            max-width: 220px;
             border-radius: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        h1 { color: #d32f2f; margin: 10px 0; }
-        p { font-size: 1.2rem; color: #555; }
+        h1 { color: #d32f2f; margin: 10px 0; font-size: 1.8rem; }
+        p { font-size: 1.2rem; color: #555; margin-bottom: 20px; }
 
         .btn-container {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 20px;
-            position: relative;
             height: 50px;
         }
 
         button {
             padding: 10px 25px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             border: none;
             border-radius: 10px;
             cursor: pointer;
@@ -105,31 +98,28 @@
         }
 
         #yesBtn { background-color: #4caf50; color: white; }
-        #noBtn { background-color: #f44336; color: white; transition: all 0.1s ease; }
+        #noBtn { background-color: #f44336; color: white; transition: all 0.1s; }
 
-        /* หน้าแสดงความยินดี */
         #successPage {
             display: none;
             text-align: center;
+            z-index: 30;
         }
 
-        .shake { animation: shake-anim 0.3s infinite; }
+        .shake { animation: shake-anim 0.2s infinite; }
         @keyframes shake-anim {
-            0%, 100% { transform: translate(0,0); }
-            25% { transform: translate(-10px, 0); }
-            75% { transform: translate(10px, 0); }
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
         }
     </style>
 </head>
 <body>
 
     <div class="container" id="mainContainer">
-        <div class="envelope" onclick="openEnvelope()">
-            <div class="envelope-text">💌 Click to Open</div>
-        </div>
+        <div class="envelope" onclick="openEnvelope()"></div>
 
         <div id="card">
-            <img class="main-img" src="https://i.ibb.co/3ykXW2K/cat-love.gif" alt="Cute Cat">
+            <img class="main-img" src="https://media.tenor.com/O6lV9X0J8m0AAAAM/cat-cute.gif" alt="Cute Cat">
             <h1>Tinthai</h1>
             <p>Will you be my Valentine 🫦</p>
             <div class="btn-container">
@@ -140,10 +130,10 @@
     </div>
 
     <div id="successPage">
-        <h1 style="font-size: 3rem; color: #d32f2f;">Yee mak noob</h1>
+        <h1 style="font-size: 2.5rem; color: #d32f2f;">Yee mak noob</h1>
         <h2 style="color: #555;">Best decision ever</h2>
-        <img src="https://i.ibb.co/L5M2v1y/cat-dance.gif" style="width: 300px; border-radius: 20px;">
-        <p style="font-weight: bold; font-size: 2rem; color: #ff4081; margin-top: 20px;">I love u baby</p>
+        <img src="https://media.tenor.com/z963X3_B770AAAAM/cat-dance.gif" style="width: 280px; border-radius: 20px;">
+        <p style="font-weight: bold; font-size: 1.8rem; color: #ff4081; margin-top: 15px;">I love u baby</p>
     </div>
 
     <script>
@@ -154,11 +144,10 @@
         function moveButton() {
             const noBtn = document.getElementById('noBtn');
             noBtn.style.position = 'fixed';
-            const padding = 50;
-            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
-            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
-            noBtn.style.left = Math.max(padding, Math.random() * maxX) + 'px';
-            noBtn.style.top = Math.max(padding, Math.random() * maxY) + 'px';
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
         }
 
         function showSuccess() {
@@ -166,7 +155,7 @@
             document.getElementById('successPage').style.display = 'block';
             document.body.style.backgroundColor = '#fce4ec';
             document.body.classList.add('shake');
-            setTimeout(() => document.body.classList.remove('shake'), 2500);
+            setTimeout(() => document.body.classList.remove('shake'), 2000);
             setInterval(createHeart, 150);
         }
 
